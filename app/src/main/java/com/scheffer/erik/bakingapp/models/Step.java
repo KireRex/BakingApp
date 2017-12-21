@@ -1,4 +1,4 @@
-package com.scheffer.erik.bakingapp.model;
+package com.scheffer.erik.bakingapp.models;
 
 public class Step {
     private int id;

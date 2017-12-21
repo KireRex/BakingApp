@@ -1,4 +1,4 @@
-package com.scheffer.erik.bakingapp.model;
+package com.scheffer.erik.bakingapp.models;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.scheffer.erik.bakingapp;
+package com.scheffer.erik.bakingapp.services;
 
-import com.scheffer.erik.bakingapp.model.Recipe;
+import com.scheffer.erik.bakingapp.models.Recipe;
 
 import java.util.List;
 
