@@ -27,7 +27,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                                  .inflate(R.layout.recipe_item, parent, false);
+                                  .inflate(R.layout.ingredient_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -47,7 +47,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.recipe_name_text)
+        @BindView(R.id.ingredient_text)
         TextView ingredientText;
 
         ViewHolder(final View itemView) {

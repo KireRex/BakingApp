@@ -25,7 +25,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RecipesActivity extends AppCompatActivity {
     List<Recipe> recipes;
-    LinearLayoutManager recipesLayoutManager;
 
     @BindView(R.id.recipes_recycle_view)
     RecyclerView recipesRecyclerView;
@@ -37,11 +36,7 @@ public class RecipesActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         recipesRecyclerView.setHasFixedSize(true);
-        recipesLayoutManager = new LinearLayoutManager(this);
-        recipesRecyclerView.setLayoutManager(recipesLayoutManager);
-        recipesRecyclerView.addItemDecoration(
-                new DividerItemDecoration(recipesRecyclerView.getContext(),
-                                          recipesLayoutManager.getOrientation()));
+        recipesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecipeAdapter recipeAdapter = new RecipeAdapter(new ArrayList<Recipe>());
         recipesRecyclerView.setAdapter(recipeAdapter);
 
