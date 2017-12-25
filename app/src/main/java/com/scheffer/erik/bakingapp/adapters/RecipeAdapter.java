@@ -1,16 +1,22 @@
 package com.scheffer.erik.bakingapp.adapters;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.scheffer.erik.bakingapp.R;
+import com.scheffer.erik.bakingapp.StepListActivity;
 import com.scheffer.erik.bakingapp.models.Recipe;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static com.scheffer.erik.bakingapp.StepListActivity.RECIPE_EXTRA_KEY;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
@@ -40,16 +46,21 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.recipe_name_text)
         TextView recipeNameText;
+
         Recipe recipe;
 
         ViewHolder(final View itemView) {
             super(itemView);
-            this.recipeNameText = itemView.findViewById(R.id.recipe_name_text);
+            ButterKnife.bind(this, itemView);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("TODO", "go to recipe details activity");
+                    Intent intent = new Intent(itemView.getContext(), StepListActivity.class);
+                    intent.putExtra(RECIPE_EXTRA_KEY, recipe);
+                    itemView.getContext().startActivity(intent);
                 }
             });
         }

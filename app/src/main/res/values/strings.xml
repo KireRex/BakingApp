@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Baking App</string>
+
+    <!--Steps list-->
+    <string name="ingredients">Ingredients</string>
+    <string name="ingredient_description">• %1$.1f %2$s of %3$s</string>
+    <string name="step_number">Step %1$d</string>
+    <string name="steps">Steps</string>
+    <string name="title_step_list">Steps</string>
+
+    <!--Steps detail-->
+    <string name="title_step_detail">Step Detail</string>
 </resources>
