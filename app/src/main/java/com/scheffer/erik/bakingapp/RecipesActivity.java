@@ -1,14 +1,19 @@
 package com.scheffer.erik.bakingapp;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.gson.GsonBuilder;
 import com.scheffer.erik.bakingapp.adapters.RecipeAdapter;
+import com.scheffer.erik.bakingapp.iddlingrsource.SimpleIdlingResource;
 import com.scheffer.erik.bakingapp.models.Recipe;
 import com.scheffer.erik.bakingapp.services.RecipeService;
 
@@ -29,6 +34,9 @@ public class RecipesActivity extends AppCompatActivity {
     @BindView(R.id.recipes_recycle_view)
     RecyclerView recipesRecyclerView;
 
+    @Nullable
+    private SimpleIdlingResource idlingResource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,24 +51,61 @@ public class RecipesActivity extends AppCompatActivity {
         getRecipes();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.refresh) {
+            getRecipes();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void getRecipes() {
-        Retrofit retrofit = new Retrofit.Builder()
+        if (idlingResource != null) {
+            idlingResource.setIdleState(false);
+        }
+        new Retrofit.Builder()
                 .baseUrl("http://go.udacity.com/")
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
-                .build();
-        retrofit.create(RecipeService.class).getRecipes().enqueue(new Callback<List<Recipe>>() {
+                .build()
+                .create(RecipeService.class).getRecipes().enqueue(new Callback<List<Recipe>>() {
             @Override
             public void onResponse(@NonNull Call<List<Recipe>> call,
                                    @NonNull Response<List<Recipe>> response) {
                 recipes = response.body();
                 RecipeAdapter recipeAdapter = new RecipeAdapter(recipes);
                 recipesRecyclerView.setAdapter(recipeAdapter);
+                if (idlingResource != null) {
+                    idlingResource.setIdleState(true);
+                }
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Recipe>> call, @NonNull Throwable t) {
                 t.printStackTrace();
+                if (idlingResource != null) {
+                    idlingResource.setIdleState(true);
+                }
             }
         });
+    }
+
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (idlingResource == null) {
+            idlingResource = new SimpleIdlingResource();
+        }
+        return idlingResource;
     }
 }

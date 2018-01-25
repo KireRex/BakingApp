@@ -10,4 +10,5 @@
 
     <!--Steps detail-->
     <string name="title_step_detail">Step Detail</string>
+    <string name="refresh">Refresh</string>
 </resources>
