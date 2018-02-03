@@ -41,6 +41,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.google.android.exoplayer:exoplayer-core:2.6.0'
     compile 'com.google.android.exoplayer:exoplayer-ui:2.6.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
     androidTestCompile "com.android.support.test.espresso:espresso-core:${espressoLibVersion}"
     androidTestCompile "com.android.support.test.espresso:espresso-contrib:${espressoLibVersion}"

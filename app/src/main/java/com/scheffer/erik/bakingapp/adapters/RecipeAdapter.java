@@ -7,12 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.scheffer.erik.bakingapp.R;
 import com.scheffer.erik.bakingapp.StepListActivity;
 import com.scheffer.erik.bakingapp.models.Ingredient;
 import com.scheffer.erik.bakingapp.models.Recipe;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -27,9 +29,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public static final String INGREDIENTS_PREFERENCES_KEY = "ingredients-pref-key";
 
     private List<Recipe> recipes;
+    private Context context;
 
-    public RecipeAdapter(List<Recipe> recipes) {
+    public RecipeAdapter(List<Recipe> recipes, Context context) {
         this.recipes = recipes;
+        this.context = context;
     }
 
     @Override
@@ -44,6 +48,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         Recipe recipe = recipes.get(position);
         holder.recipeNameText.setText(recipe.getName());
         holder.recipe = recipe;
+
+        if (recipe.getImage() != null && !recipe.getImage().isEmpty()) {
+            holder.recipeImage.setVisibility(View.VISIBLE);
+            Picasso.with(context)
+                   .load(recipe.getImage())
+                   .into(holder.recipeImage);
+        } else {
+            holder.recipeImage.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -54,6 +67,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.recipe_name_text)
         TextView recipeNameText;
+
+        @BindView(R.id.recipe_image)
+        ImageView recipeImage;
 
         Recipe recipe;
 

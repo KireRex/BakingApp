@@ -45,7 +45,7 @@ public class RecipesActivity extends AppCompatActivity {
 
         recipesRecyclerView.setHasFixedSize(true);
         recipesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecipeAdapter recipeAdapter = new RecipeAdapter(new ArrayList<Recipe>());
+        RecipeAdapter recipeAdapter = new RecipeAdapter(new ArrayList<Recipe>(), this);
         recipesRecyclerView.setAdapter(recipeAdapter);
 
         getRecipes();
@@ -83,7 +83,7 @@ public class RecipesActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<List<Recipe>> call,
                                    @NonNull Response<List<Recipe>> response) {
                 recipes = response.body();
-                RecipeAdapter recipeAdapter = new RecipeAdapter(recipes);
+                RecipeAdapter recipeAdapter = new RecipeAdapter(recipes, RecipesActivity.this);
                 recipesRecyclerView.setAdapter(recipeAdapter);
                 if (idlingResource != null) {
                     idlingResource.setIdleState(true);
