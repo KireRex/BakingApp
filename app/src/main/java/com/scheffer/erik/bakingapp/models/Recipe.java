@@ -90,4 +90,26 @@ public class Recipe implements Parcelable {
         @Override
         public Recipe[] newArray(int size) {return new Recipe[size];}
     };
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Recipe recipe = (Recipe) o;
+
+        if (id != recipe.id) return false;
+        if (servings != recipe.servings) return false;
+        if (name != null ? !name.equals(recipe.name) : recipe.name != null) return false;
+        return image != null ? image.equals(recipe.image) : recipe.image == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + servings;
+        result = 31 * result + (image != null ? image.hashCode() : 0);
+        return result;
+    }
 }
