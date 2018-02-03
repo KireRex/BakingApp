@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.C;
@@ -25,6 +26,10 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.scheffer.erik.bakingapp.models.Step;
+import com.squareup.picasso.Picasso;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class StepDetailFragment extends Fragment {
     public static final String STEP_EXTRA_KEY = "step";
@@ -32,8 +37,16 @@ public class StepDetailFragment extends Fragment {
 
     private Step step;
     private SimpleExoPlayer exoPlayer;
-    private SimpleExoPlayerView playerView;
     private long playerPosition = C.TIME_UNSET;
+
+    @BindView(R.id.step_video)
+    private SimpleExoPlayerView playerView;
+
+    @BindView(R.id.step_detail_text)
+    TextView stepDetailText;
+
+    @BindView(R.id.step_image)
+    ImageView stepImage;
 
     public StepDetailFragment() {
     }
@@ -53,9 +66,17 @@ public class StepDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.step_detail, container, false);
+        ButterKnife.bind(this, rootView);
 
-        ((TextView) rootView.findViewById(R.id.step_detail_text)).setText(step.getDescription());
-        playerView = rootView.findViewById(R.id.step_video);
+        stepDetailText.setText(step.getDescription());
+        if (step.getThumbnailURL() == null || step.getThumbnailURL().isEmpty()) {
+            stepImage.setVisibility(View.GONE);
+        } else {
+            stepImage.setVisibility(View.VISIBLE);
+            Picasso.with(getContext())
+                   .load(step.getThumbnailURL())
+                   .into(stepImage);
+        }
 
         if (savedInstanceState != null) {
             playerPosition = savedInstanceState.getLong(PLAYER_POSITION_KEY, C.TIME_UNSET);

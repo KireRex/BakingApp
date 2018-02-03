@@ -13,6 +13,12 @@
             android:layout_width="match_parent"
             android:layout_height="256dp" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/step_image"
+            android:contentDescription="@string/step_image" />
+
         <TextView
             android:id="@+id/step_detail_text"
             style="?android:attr/textAppearanceLarge"

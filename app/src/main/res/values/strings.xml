@@ -16,4 +16,5 @@
     <string name="select_a_recipe">Select a recipe</string>
     <string name="step_tab_title">Step %d</string>
     <string name="recipe_image">Recipe Image</string>
+    <string name="step_image">Step Image</string>
 </resources>
