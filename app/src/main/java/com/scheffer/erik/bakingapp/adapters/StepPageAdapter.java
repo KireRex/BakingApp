@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.scheffer.erik.bakingapp.R;
 import com.scheffer.erik.bakingapp.StepDetailFragment;
@@ -13,7 +13,7 @@ import com.scheffer.erik.bakingapp.models.Step;
 import java.util.List;
 
 
-public class StepPageAdapter extends FragmentPagerAdapter {
+public class StepPageAdapter extends FragmentStatePagerAdapter {
 
     private List<Step> steps;
     private Context context;

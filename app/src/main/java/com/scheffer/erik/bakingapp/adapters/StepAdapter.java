@@ -24,15 +24,15 @@ import butterknife.ButterKnife;
 
 public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
     private List<Step> steps;
-    private final StepListActivity mParentActivity;
-    private final boolean mTwoPane;
+    private final StepListActivity parentActivity;
+    private final boolean twoPane;
 
     public StepAdapter(List<Step> steps,
-                       StepListActivity mParentActivity,
-                       boolean mTwoPane) {
+                       StepListActivity parentActivity,
+                       boolean twoPane) {
         this.steps = steps;
-        this.mParentActivity = mParentActivity;
-        this.mTwoPane = mTwoPane;
+        this.parentActivity = parentActivity;
+        this.twoPane = twoPane;
     }
 
     @Override
@@ -49,14 +49,14 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mTwoPane) {
+                if (twoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putParcelable(StepDetailFragment.STEP_EXTRA_KEY, step);
                     StepDetailFragment fragment = new StepDetailFragment();
                     fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                                   .replace(R.id.step_detail_container, fragment)
-                                   .commit();
+                    parentActivity.getSupportFragmentManager().beginTransaction()
+                                  .replace(R.id.step_detail_container, fragment)
+                                  .commit();
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, StepDetailActivity.class);

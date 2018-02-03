@@ -4,13 +4,14 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -27,10 +28,12 @@ import com.scheffer.erik.bakingapp.models.Step;
 
 public class StepDetailFragment extends Fragment {
     public static final String STEP_EXTRA_KEY = "step";
+    private static final String PLAYER_POSITION_KEY = "player-position";
 
     private Step step;
     private SimpleExoPlayer exoPlayer;
     private SimpleExoPlayerView playerView;
+    private long playerPosition = C.TIME_UNSET;
 
     public StepDetailFragment() {
     }
@@ -54,8 +57,28 @@ public class StepDetailFragment extends Fragment {
         ((TextView) rootView.findViewById(R.id.step_detail_text)).setText(step.getDescription());
         playerView = rootView.findViewById(R.id.step_video);
 
+        if (savedInstanceState != null) {
+            playerPosition = savedInstanceState.getLong(PLAYER_POSITION_KEY, C.TIME_UNSET);
+        }
+
         loadVideo();
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            playerPosition = savedInstanceState.getLong(PLAYER_POSITION_KEY, C.TIME_UNSET);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (exoPlayer != null) {
+            outState.putLong(PLAYER_POSITION_KEY, playerPosition);
+        }
     }
 
     private void loadVideo() {
@@ -66,6 +89,9 @@ public class StepDetailFragment extends Fragment {
                                                            trackSelector,
                                                            loadControl);
             playerView.setPlayer(exoPlayer);
+            if (playerPosition != C.TIME_UNSET) {
+                exoPlayer.seekTo(playerPosition);
+            }
             exoPlayer.prepare(
                     new ExtractorMediaSource(Uri.parse(step.getVideoURL()),
                                              new DefaultDataSourceFactory(
@@ -99,6 +125,7 @@ public class StepDetailFragment extends Fragment {
 
     private void releasePlayer() {
         if (exoPlayer != null) {
+            playerPosition = exoPlayer.getCurrentPosition();
             exoPlayer.stop();
             exoPlayer.release();
             exoPlayer = null;
