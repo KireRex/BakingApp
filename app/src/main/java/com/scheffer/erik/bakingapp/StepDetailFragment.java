@@ -40,7 +40,7 @@ public class StepDetailFragment extends Fragment {
     private long playerPosition = C.TIME_UNSET;
 
     @BindView(R.id.step_video)
-    private SimpleExoPlayerView playerView;
+    SimpleExoPlayerView playerView;
 
     @BindView(R.id.step_detail_text)
     TextView stepDetailText;
