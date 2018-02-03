@@ -1,33 +1,51 @@
 package com.scheffer.erik.bakingapp;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.scheffer.erik.bakingapp.adapters.StepPageAdapter;
+import com.scheffer.erik.bakingapp.models.Step;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static com.scheffer.erik.bakingapp.StepDetailFragment.STEP_EXTRA_KEY;
+
 public class StepDetailActivity extends AppCompatActivity {
+
+    public static String SELECTED_STEP_KEY = "selected-step";
+
+    @BindView(R.id.detail_toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.step_detail_container)
+    ViewPager viewPager;
+
+    @BindView(R.id.sliding_tabs)
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_detail);
-        Toolbar toolbar = findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
 
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        if (savedInstanceState == null) {
-            Bundle arguments = new Bundle();
-            arguments.putParcelable(StepDetailFragment.STEP_EXTRA_KEY,
-                                    getIntent().getParcelableExtra(StepDetailFragment.STEP_EXTRA_KEY));
-            StepDetailFragment fragment = new StepDetailFragment();
-            fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction()
-                                       .add(R.id.step_detail_container, fragment)
-                                       .commit();
-        }
+        StepPageAdapter adapter =
+                new StepPageAdapter(getSupportFragmentManager(),
+                                    getIntent().<Step>getParcelableArrayListExtra(STEP_EXTRA_KEY),
+                                    this);
+        viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(getIntent().getIntExtra(SELECTED_STEP_KEY, 0));
+        tabLayout.setupWithViewPager(viewPager);
     }
 }

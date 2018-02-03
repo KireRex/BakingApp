@@ -3,6 +3,7 @@ package com.scheffer.erik.bakingapp.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.scheffer.erik.bakingapp.StepDetailFragment;
 import com.scheffer.erik.bakingapp.StepListActivity;
 import com.scheffer.erik.bakingapp.models.Step;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,9 +43,9 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         final Step step = steps.get(position);
-        holder.stepDescriptionText.setText(step.getDescription());
+        holder.stepDescriptionText.setText(step.getShortDescription());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +60,10 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, StepDetailActivity.class);
-                    intent.putExtra(StepDetailFragment.STEP_EXTRA_KEY, step);
+                    intent.putParcelableArrayListExtra(StepDetailFragment.STEP_EXTRA_KEY,
+                                                       new ArrayList<Parcelable>(steps));
+                    intent.putExtra(StepDetailActivity.SELECTED_STEP_KEY,
+                                    holder.getAdapterPosition());
                     context.startActivity(intent);
                 }
             }

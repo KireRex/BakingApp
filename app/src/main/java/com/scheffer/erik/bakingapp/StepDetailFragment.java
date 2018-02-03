@@ -1,5 +1,6 @@
 package com.scheffer.erik.bakingapp;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,9 +40,9 @@ public class StepDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         step = getArguments().getParcelable(STEP_EXTRA_KEY);
         Activity activity = this.getActivity();
-        CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
+        ActionBar appBarLayout = activity.getActionBar();
         if (appBarLayout != null) {
-            appBarLayout.setTitle(step.getShortDescription());
+            appBarLayout.setDisplayHomeAsUpEnabled(true);
         }
     }
 
