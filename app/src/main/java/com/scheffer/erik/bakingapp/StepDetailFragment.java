@@ -97,9 +97,7 @@ public class StepDetailFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (exoPlayer != null) {
-            outState.putLong(PLAYER_POSITION_KEY, playerPosition);
-        }
+        outState.putLong(PLAYER_POSITION_KEY, playerPosition);
     }
 
     private void loadVideo() {
