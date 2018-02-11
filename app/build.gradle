@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 ext {
     supportLibVersion = '26.1.0'
@@ -47,4 +49,12 @@ dependencies {
     androidTestCompile "com.android.support.test.espresso:espresso-contrib:${espressoLibVersion}"
     androidTestCompile "com.android.support.test.espresso:espresso-intents:${espressoLibVersion}"
     compile "com.android.support.test.espresso:espresso-idling-resource:${espressoLibVersion}"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
+
+androidExtensions {
+    experimental = true
 }
