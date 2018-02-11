@@ -1,4 +1,4 @@
-package com.scheffer.erik.bakingapp;
+package com.scheffer.erik.bakingapp.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import com.scheffer.erik.bakingapp.R;
 import com.scheffer.erik.bakingapp.adapters.IngredientAdapter;
 import com.scheffer.erik.bakingapp.adapters.StepAdapter;
 import com.scheffer.erik.bakingapp.models.Recipe;

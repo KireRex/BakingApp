@@ -6,6 +6,8 @@ import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.scheffer.erik.bakingapp.activities.RecipesActivity;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -21,7 +23,7 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasCom
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.scheffer.erik.bakingapp.StepListActivity.RECIPE_EXTRA_KEY;
+import static com.scheffer.erik.bakingapp.activities.StepListActivity.RECIPE_EXTRA_KEY;
 import static org.hamcrest.CoreMatchers.allOf;
 
 
@@ -46,8 +48,8 @@ public class RecipesActivityTest {
         onView(withId(R.id.recipes_recycle_view))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
-        intended(allOf(hasExtra(RECIPE_EXTRA_KEY, recipesActivityRule.getActivity().recipes.get(0)),
-                       hasComponent("com.scheffer.erik.bakingapp.StepListActivity")));
+        intended(allOf(hasExtra(RECIPE_EXTRA_KEY, recipesActivityRule.getActivity().getRecipes().get(0)),
+                       hasComponent("com.scheffer.erik.bakingapp.activities.StepListActivity")));
     }
 
     @After

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.scheffer.erik.bakingapp.R;
-import com.scheffer.erik.bakingapp.StepListActivity;
+import com.scheffer.erik.bakingapp.activities.StepListActivity;
 import com.scheffer.erik.bakingapp.models.Ingredient;
 import com.scheffer.erik.bakingapp.models.Recipe;
 import com.squareup.picasso.Picasso;
@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.scheffer.erik.bakingapp.StepListActivity.RECIPE_EXTRA_KEY;
+import static com.scheffer.erik.bakingapp.activities.StepListActivity.RECIPE_EXTRA_KEY;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 

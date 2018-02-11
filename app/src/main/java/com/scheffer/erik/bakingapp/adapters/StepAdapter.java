@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.scheffer.erik.bakingapp.R;
-import com.scheffer.erik.bakingapp.StepDetailActivity;
-import com.scheffer.erik.bakingapp.StepDetailFragment;
-import com.scheffer.erik.bakingapp.StepListActivity;
+import com.scheffer.erik.bakingapp.activities.StepDetailActivity;
+import com.scheffer.erik.bakingapp.activities.StepListActivity;
+import com.scheffer.erik.bakingapp.fragments.StepDetailFragment;
 import com.scheffer.erik.bakingapp.models.Step;
 
 import java.util.ArrayList;

@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.scheffer.erik.bakingapp.R;
-import com.scheffer.erik.bakingapp.StepDetailFragment;
+import com.scheffer.erik.bakingapp.fragments.StepDetailFragment;
 import com.scheffer.erik.bakingapp.models.Step;
 
 import java.util.List;

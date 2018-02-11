@@ -1,4 +1,4 @@
-package com.scheffer.erik.bakingapp;
+package com.scheffer.erik.bakingapp.fragments;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -25,6 +25,7 @@ import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.scheffer.erik.bakingapp.R;
 import com.scheffer.erik.bakingapp.models.Step;
 import com.squareup.picasso.Picasso;
 

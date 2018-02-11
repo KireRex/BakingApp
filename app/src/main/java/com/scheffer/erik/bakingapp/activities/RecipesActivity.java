@@ -1,17 +1,18 @@
-package com.scheffer.erik.bakingapp;
+package com.scheffer.erik.bakingapp.activities;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.gson.GsonBuilder;
+import com.scheffer.erik.bakingapp.R;
 import com.scheffer.erik.bakingapp.adapters.RecipeAdapter;
 import com.scheffer.erik.bakingapp.iddlingrsource.SimpleIdlingResource;
 import com.scheffer.erik.bakingapp.models.Recipe;
@@ -29,7 +30,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RecipesActivity extends AppCompatActivity {
-    List<Recipe> recipes;
+    private List<Recipe> recipes;
 
     @BindView(R.id.recipes_recycle_view)
     RecyclerView recipesRecyclerView;
@@ -48,7 +49,7 @@ public class RecipesActivity extends AppCompatActivity {
         RecipeAdapter recipeAdapter = new RecipeAdapter(new ArrayList<Recipe>(), this);
         recipesRecyclerView.setAdapter(recipeAdapter);
 
-        getRecipes();
+        retrieveRecipes();
     }
 
     @Override
@@ -63,14 +64,14 @@ public class RecipesActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.refresh) {
-            getRecipes();
+            retrieveRecipes();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void getRecipes() {
+    private void retrieveRecipes() {
         if (idlingResource != null) {
             idlingResource.setIdleState(false);
         }
@@ -107,5 +108,10 @@ public class RecipesActivity extends AppCompatActivity {
             idlingResource = new SimpleIdlingResource();
         }
         return idlingResource;
+    }
+
+    @VisibleForTesting
+    public List<Recipe> getRecipes() {
+        return recipes;
     }
 }

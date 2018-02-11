@@ -40,7 +40,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     app:layoutManager="LinearLayoutManager"
-                    tools:context="com.scheffer.erik.bakingapp.StepListActivity"
+                    tools:context="com.scheffer.erik.bakingapp.activities.StepListActivity"
                     tools:listitem="@layout/step_list_content" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="LinearLayoutManager"
-            tools:context="com.scheffer.erik.bakingapp.StepListActivity"
+            tools:context="com.scheffer.erik.bakingapp.activities.StepListActivity"
             tools:listitem="@layout/step_list_content" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

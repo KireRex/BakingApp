@@ -1,4 +1,4 @@
-package com.scheffer.erik.bakingapp;
+package com.scheffer.erik.bakingapp.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,13 +7,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.scheffer.erik.bakingapp.R;
 import com.scheffer.erik.bakingapp.adapters.StepPageAdapter;
 import com.scheffer.erik.bakingapp.models.Step;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.scheffer.erik.bakingapp.StepDetailFragment.STEP_EXTRA_KEY;
+import static com.scheffer.erik.bakingapp.fragments.StepDetailFragment.STEP_EXTRA_KEY;
 
 public class StepDetailActivity extends AppCompatActivity {
 

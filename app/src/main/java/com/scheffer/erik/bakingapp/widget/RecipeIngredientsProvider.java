@@ -1,4 +1,4 @@
-package com.scheffer.erik.bakingapp;
+package com.scheffer.erik.bakingapp.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import com.scheffer.erik.bakingapp.widget.GridWidgetService;
+import com.scheffer.erik.bakingapp.R;
 
 public class RecipeIngredientsProvider extends AppWidgetProvider {
 
