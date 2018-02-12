@@ -9,9 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.scheffer.erik.bakingapp.R;
-import com.scheffer.erik.bakingapp.adapters.IngredientAdapter;
-import com.scheffer.erik.bakingapp.adapters.StepAdapter;
 import com.scheffer.erik.bakingapp.models.Recipe;
+import com.scheffer.erik.bakingapp.recyclerviewadapters.IngredientAdapter;
+import com.scheffer.erik.bakingapp.recyclerviewadapters.StepAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

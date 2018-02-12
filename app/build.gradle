@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 ext {
     supportLibVersion = '26.1.0'
     espressoLibVersion = '3.0.1'
+    anko_version = '0.10.4'
 }
 
 android {
@@ -50,6 +51,7 @@ dependencies {
     androidTestCompile "com.android.support.test.espresso:espresso-intents:${espressoLibVersion}"
     compile "com.android.support.test.espresso:espresso-idling-resource:${espressoLibVersion}"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
 }
 repositories {
     mavenCentral()

@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.scheffer.erik.bakingapp.R;
-import com.scheffer.erik.bakingapp.adapters.StepPageAdapter;
 import com.scheffer.erik.bakingapp.models.Step;
+import com.scheffer.erik.bakingapp.pageadapters.StepPageAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

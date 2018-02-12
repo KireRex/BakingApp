@@ -1,4 +1,4 @@
-package com.scheffer.erik.bakingapp.adapters;
+package com.scheffer.erik.bakingapp.pageadapters;
 
 import android.content.Context;
 import android.os.Bundle;

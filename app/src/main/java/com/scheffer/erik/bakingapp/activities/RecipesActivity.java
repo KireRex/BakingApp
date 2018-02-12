@@ -13,9 +13,9 @@ import android.view.MenuItem;
 
 import com.google.gson.GsonBuilder;
 import com.scheffer.erik.bakingapp.R;
-import com.scheffer.erik.bakingapp.adapters.RecipeAdapter;
 import com.scheffer.erik.bakingapp.iddlingrsource.SimpleIdlingResource;
 import com.scheffer.erik.bakingapp.models.Recipe;
+import com.scheffer.erik.bakingapp.recyclerviewadapters.RecipeAdapter;
 import com.scheffer.erik.bakingapp.services.RecipeService;
 
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class RecipesActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if(id == R.id.refresh) {
+        if (id == R.id.refresh) {
             retrieveRecipes();
             return true;
         }
@@ -84,6 +84,9 @@ public class RecipesActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<List<Recipe>> call,
                                    @NonNull Response<List<Recipe>> response) {
                 recipes = response.body();
+                if (recipes == null) {
+                    recipes = new ArrayList<>();
+                }
                 RecipeAdapter recipeAdapter = new RecipeAdapter(recipes, RecipesActivity.this);
                 recipesRecyclerView.setAdapter(recipeAdapter);
                 if (idlingResource != null) {
