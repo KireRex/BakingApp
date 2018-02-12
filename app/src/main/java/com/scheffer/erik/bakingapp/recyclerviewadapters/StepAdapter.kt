@@ -11,6 +11,7 @@ import com.scheffer.erik.bakingapp.R
 import com.scheffer.erik.bakingapp.activities.SELECTED_STEP_KEY
 import com.scheffer.erik.bakingapp.activities.StepDetailActivity
 import com.scheffer.erik.bakingapp.activities.StepListActivity
+import com.scheffer.erik.bakingapp.fragments.STEP_EXTRA_KEY
 import com.scheffer.erik.bakingapp.fragments.StepDetailFragment
 import com.scheffer.erik.bakingapp.models.Step
 import org.jetbrains.anko.startActivity
@@ -31,7 +32,7 @@ class StepAdapter(private val steps: List<Step>,
             if (twoPane) {
                 val fragment = StepDetailFragment().apply {
                     arguments = Bundle().apply {
-                        putParcelable(StepDetailFragment.STEP_EXTRA_KEY, step)
+                        putParcelable(STEP_EXTRA_KEY, step)
                     }
                 }
                 parentActivity.supportFragmentManager.beginTransaction()
@@ -39,7 +40,7 @@ class StepAdapter(private val steps: List<Step>,
                         .commit()
             } else {
                 view.context.startActivity<StepDetailActivity>(
-                        StepDetailFragment.STEP_EXTRA_KEY to ArrayList<Parcelable>(steps),
+                        STEP_EXTRA_KEY to ArrayList<Parcelable>(steps),
                         SELECTED_STEP_KEY to holder.adapterPosition
                 )
             }

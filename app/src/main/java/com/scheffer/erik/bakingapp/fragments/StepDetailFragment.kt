@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.step_detail.*
 
 const val PLAYER_POSITION_KEY = "player-position"
+const val STEP_EXTRA_KEY = "step"
 
 class StepDetailFragment : Fragment() {
 
@@ -101,9 +102,5 @@ class StepDetailFragment : Fragment() {
             exoPlayer!!.release()
             exoPlayer = null
         }
-    }
-
-    companion object {
-        const val STEP_EXTRA_KEY = "step"
     }
 }

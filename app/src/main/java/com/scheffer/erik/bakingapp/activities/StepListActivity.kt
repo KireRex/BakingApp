@@ -12,6 +12,8 @@ import com.scheffer.erik.bakingapp.recyclerviewadapters.StepAdapter
 import kotlinx.android.synthetic.main.activity_step_list.*
 import kotlinx.android.synthetic.main.step_list.*
 
+const val RECIPE_EXTRA_KEY = "recipe"
+
 class StepListActivity : AppCompatActivity() {
 
     private var mTwoPane: Boolean = false
@@ -38,9 +40,5 @@ class StepListActivity : AppCompatActivity() {
         }
 
         ingredients_list.adapter = IngredientAdapter(ingredients, this)
-    }
-
-    companion object {
-        const val RECIPE_EXTRA_KEY = "recipe"
     }
 }

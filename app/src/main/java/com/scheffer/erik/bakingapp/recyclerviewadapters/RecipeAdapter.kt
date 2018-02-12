@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.scheffer.erik.bakingapp.R
+import com.scheffer.erik.bakingapp.activities.RECIPE_EXTRA_KEY
 import com.scheffer.erik.bakingapp.activities.StepListActivity
-import com.scheffer.erik.bakingapp.activities.StepListActivity.Companion.RECIPE_EXTRA_KEY
 import com.scheffer.erik.bakingapp.models.Recipe
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.startActivity
+
+const val SHARED_PREFERENCES_NAME = "sharedpref"
+const val INGREDIENTS_PREFERENCES_KEY = "ingredients-pref-key"
 
 class RecipeAdapter(private val recipes: List<Recipe>,
                     private val context: Context) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
@@ -64,10 +67,5 @@ class RecipeAdapter(private val recipes: List<Recipe>,
                     }
                     putString(INGREDIENTS_PREFERENCES_KEY, builder.toString())
                 }.apply()
-    }
-
-    companion object {
-        const val SHARED_PREFERENCES_NAME = "sharedpref"
-        const val INGREDIENTS_PREFERENCES_KEY = "ingredients-pref-key"
     }
 }

@@ -3,7 +3,7 @@ package com.scheffer.erik.bakingapp.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.scheffer.erik.bakingapp.R
-import com.scheffer.erik.bakingapp.fragments.StepDetailFragment.Companion.STEP_EXTRA_KEY
+import com.scheffer.erik.bakingapp.fragments.STEP_EXTRA_KEY
 import com.scheffer.erik.bakingapp.pageadapters.StepPageAdapter
 import kotlinx.android.synthetic.main.activity_step_detail.*
 

@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.scheffer.erik.bakingapp.recyclerviewadapters.RecipeAdapter.INGREDIENTS_PREFERENCES_KEY;
-import static com.scheffer.erik.bakingapp.recyclerviewadapters.RecipeAdapter.SHARED_PREFERENCES_NAME;
-
+import static com.scheffer.erik.bakingapp.recyclerviewadapters.RecipeAdapterKt.INGREDIENTS_PREFERENCES_KEY;
+import static com.scheffer.erik.bakingapp.recyclerviewadapters.RecipeAdapterKt.SHARED_PREFERENCES_NAME;
 
 public class GridRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 

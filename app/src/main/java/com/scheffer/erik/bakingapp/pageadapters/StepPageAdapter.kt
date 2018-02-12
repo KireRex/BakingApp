@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.scheffer.erik.bakingapp.R
+import com.scheffer.erik.bakingapp.fragments.STEP_EXTRA_KEY
 import com.scheffer.erik.bakingapp.fragments.StepDetailFragment
 import com.scheffer.erik.bakingapp.models.Step
 
@@ -16,7 +17,7 @@ class StepPageAdapter(fm: FragmentManager,
     override fun getItem(position: Int) =
             StepDetailFragment().apply {
                 arguments = Bundle().apply {
-                    putParcelable(StepDetailFragment.STEP_EXTRA_KEY, steps[position])
+                    putParcelable(STEP_EXTRA_KEY, steps[position])
                 }
             }
 
