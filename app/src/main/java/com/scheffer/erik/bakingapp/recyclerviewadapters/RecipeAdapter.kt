@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.scheffer.erik.bakingapp.R
 import com.scheffer.erik.bakingapp.activities.StepListActivity
-import com.scheffer.erik.bakingapp.activities.StepListActivity.RECIPE_EXTRA_KEY
+import com.scheffer.erik.bakingapp.activities.StepListActivity.Companion.RECIPE_EXTRA_KEY
 import com.scheffer.erik.bakingapp.models.Recipe
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.startActivity

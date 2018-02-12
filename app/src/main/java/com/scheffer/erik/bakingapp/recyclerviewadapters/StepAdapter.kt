@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.scheffer.erik.bakingapp.R
+import com.scheffer.erik.bakingapp.activities.SELECTED_STEP_KEY
 import com.scheffer.erik.bakingapp.activities.StepDetailActivity
 import com.scheffer.erik.bakingapp.activities.StepListActivity
 import com.scheffer.erik.bakingapp.fragments.StepDetailFragment
@@ -39,7 +40,7 @@ class StepAdapter(private val steps: List<Step>,
             } else {
                 view.context.startActivity<StepDetailActivity>(
                         StepDetailFragment.STEP_EXTRA_KEY to ArrayList<Parcelable>(steps),
-                        StepDetailActivity.SELECTED_STEP_KEY to holder.adapterPosition
+                        SELECTED_STEP_KEY to holder.adapterPosition
                 )
             }
         }
