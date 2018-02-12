@@ -79,7 +79,7 @@ public class RecipesActivity extends AppCompatActivity {
                 .baseUrl("http://go.udacity.com/")
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
                 .build()
-                .create(RecipeService.class).getRecipes().enqueue(new Callback<List<Recipe>>() {
+                .create(RecipeService.class).recipes().enqueue(new Callback<List<Recipe>>() {
             @Override
             public void onResponse(@NonNull Call<List<Recipe>> call,
                                    @NonNull Response<List<Recipe>> response) {
