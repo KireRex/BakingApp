@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RecipesActivity"
+            android:name=".activities.RecipesActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,26 +21,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StepListActivity"
+            android:name=".activities.StepListActivity"
             android:label="@string/title_step_list"
             android:launchMode="singleTop"
-            android:parentActivityName=".RecipesActivity"
+            android:parentActivityName=".activities.RecipesActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.scheffer.erik.bakingapp.RecipesActivity" />
+                android:value="com.scheffer.erik.bakingapp.activities.RecipesActivity" />
         </activity>
         <activity
-            android:name=".StepDetailActivity"
+            android:name=".activities.StepDetailActivity"
             android:label="@string/title_step_detail"
-            android:parentActivityName=".StepListActivity"
+            android:parentActivityName=".activities.StepListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.scheffer.erik.bakingapp.StepListActivity" />
+                android:value="com.scheffer.erik.bakingapp.activities.StepListActivity" />
         </activity>
 
-        <receiver android:name=".RecipeIngredientsProvider">
+        <receiver android:name=".widget.RecipeIngredientsProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

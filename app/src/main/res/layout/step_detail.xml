@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:textIsSelectable="true"
-            tools:context="com.scheffer.erik.bakingapp.StepDetailFragment"
+            tools:context="com.scheffer.erik.bakingapp.fragments.StepDetailFragment"
             tools:text="Step detailed description" />
     </LinearLayout>
 </ScrollView>
